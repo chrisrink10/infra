@@ -27,7 +27,21 @@ staging, demoing, and production (for example).
 
 ### Structure
 
+Each GCP project folder can be structured roughly like this for most
+simple projects.
 
+```
+└── project_name                        ## Project folder
+    ├── main.tf                         ## Primary infra configuration
+    ├── outputs.tf                      ## Outputs
+    ├── terraform.tfstate
+    ├── terraform.tfstate.backup
+    └── vars.tf                         ## Configuration variables
+```
+
+Ideally, I wouldn't be using the "local" Terraform backend to store 
+`*.tfstate` files, but it's much too convenient for the current setup
+since I don't have an organizational Terraform administrator right now.
 
 ### Creating Terraform Admin Credentials
 
@@ -109,3 +123,8 @@ If everything, seems good then you can apply with:
 ```bash
 terraform apply
 ```
+
+## References
+
+ * https://github.com/steinim/gcp-terraform-workshop
+ * https://www.terraform.io/intro/getting-started/remote.html
